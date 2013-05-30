@@ -43,7 +43,7 @@ class CursesGraphics:
 	def refresh(self):
 		self._window.refresh();
 
-	def wait(self, milliseconds = -1):
+	def wait_for_key(self, milliseconds = -1):
 		self._window.timeout(milliseconds);
 		return self._window.getch();
 
