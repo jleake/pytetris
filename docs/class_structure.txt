@@ -1,0 +1,29 @@
+Classes:
+	Block
+	Piece
+	Base
+
+Block class:
+	Variables:
+		point = (row, column)
+		color
+		character
+
+Piece class:
+	Private variables:
+		points = list of Block objects
+
+	Methods:
+		move_down()
+		rotate()
+		move_side(base, direction)
+
+Base class:
+	Private variables:
+		points - list of Block objects
+
+	Methods:
+		delete_rows()
+		add_piece(piece)
+		is_piece_hit(piece)
+		is_game_over()
