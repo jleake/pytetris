@@ -1,6 +1,5 @@
-from wrapper.wrapper import curses_wrapper
-from wrapper.cg import CursesGraphics
-from game import *
+from wrapper import CursesGraphics, curses_wrapper
+from game import Block
 
 def main(cg):
 	for n in range(1, 30):

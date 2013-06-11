@@ -1,6 +1,7 @@
 import curses
 
 class CursesGraphics:
+
 	BLACK = curses.COLOR_BLACK
 	RED = curses.COLOR_RED
 	WHITE = curses.COLOR_WHITE
@@ -60,3 +61,14 @@ class CursesGraphics:
 			cls._next_color_pair += 1
 
 		return cpd[color_pair]
+
+
+# Calls the "real" main function, sending a CursesGraphics object.
+def _wrapper_helper(stdscr, main_function):
+	cg = CursesGraphics(stdscr)
+	main_function(cg)
+
+# Wrapper for the main function does setup and cleanup for curses.
+def curses_wrapper(main_function):
+	curses.wrapper(_wrapper_helper, main_function)
+
