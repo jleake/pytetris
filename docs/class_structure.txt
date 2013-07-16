@@ -18,9 +18,9 @@ Piece class:
 	Methods:
 		move_down()
 		rotate()
-		move_side(base, direction)
+		move_side(floor, direction)
 
-Base class:
+Floor class:
 	Private variables:
 		points - list of Block objects
 
