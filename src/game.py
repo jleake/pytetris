@@ -66,7 +66,9 @@ class Piece:
 # Jono: Back to 'Base'.
 class Base:
 
-	def __init__(self):
+	def __init__(self, dimensions):
+		# Width and height of the game board.
+		self._dimensions = dimensions
 		pass
 
 	def delete_rows(self):
