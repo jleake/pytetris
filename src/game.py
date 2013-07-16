@@ -22,14 +22,14 @@ class Piece:
 		#self.points = (block,block,block...)
 
 	# Jono: returns a true/false value for whether or not the move was
-	# Jono: successful (i.e., collision with floor)
-	def move(self, floor, direction):
-		# Store old pivot, in case movement hits the floor.
+	# Jono: successful (i.e., collision with base)
+	def move(self, base, direction):
+		# Store old pivot, in case movement hits the base.
 		old_pivot = self.pivot
 
 		# Since there are possible many, many locations that would
-		# need to be checked for floor collision, let's just move the
-		# piece, then let the 'floor' object check it. If there is a
+		# need to be checked for base collision, let's just move the
+		# piece, then let the 'base' object check it. If there is a
 		# collision, we can just revert to the old pivot before we
 		# redraw the game. (see below)
 		if direction == DOWN:
@@ -49,7 +49,7 @@ class Piece:
 			break #if it is rotating into base, it doesn't rotate.
 
 		# If we have a collision, revert to old pivot.
-		if floor.is_piece_hit(self):
+		if base.is_piece_hit(self):
 			self.pivot = old_pivot
 			return False
 
@@ -63,8 +63,8 @@ class Piece:
 			self.point = point + 1
 
 
-# Jono: Mike - I liked your use of 'floor' instead of 'base'.
-class Floor:
+# Jono: Back to 'Base'.
+class Base:
 
 	def __init__(self):
 		pass
