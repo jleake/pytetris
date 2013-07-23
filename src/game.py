@@ -41,7 +41,7 @@ class Piece:
 		elif direction = RIGHT:
 			self.pivot(2) = pivot(2) + 1
 		elif direction = UP:
-			self.rotate(self, base) #rotate to the right
+			self.rotate(self) #rotate to the right
 
 		# If we have a collision, revert to old pivot.
 		if self.hit(self, base) == 1:
@@ -58,7 +58,7 @@ class Piece:
 		
 	def hit(self, base) # Need location of new pivot, new "arms," and base.
 		# Mike: Take in direction search base matrix for location.
-		# Mike: If the new location of the piece hits a 1, throw a violation.
+		# Mike: If the new location of the piece hits a number, throw a violation.
 		# Mike: Depending on the violation it either does not move or it gets absorbed.
 		if column = column:
 			# Mike: loop through arms and check base rows to see if there is a violation.
@@ -72,21 +72,44 @@ class Piece:
 
 	def rotate(self):
 		# TODO: matrix rotation
-		for arm in self.arms
-			self.arms(arm) = self.arms(arm) + 1
+		# Mike: the arms are just one number that represent the direction from the pivot (1 = the right of pivot)
+		# Mike: the numbers go around in a circle so if you just add one
+		# Mike: they will end up in the same place, except for when the circle has been completed
+		for each arm in self.arms
+			if self.arms(arm) + 1 == 5: # Circle complete go back to start
+				self.arms(arm) = 1
+			elif self.arms(arm) + 1 == 9:
+				self.arms(arm) = 5
+			elif self.arms(arm) + 1 == 13:
+				self.arms(arm) = 9
+			else:
+				self.arms(arm) = self.arms(arm) + 1
 
-
-# Jono: Back to 'Base'.
 class Base:
 
 	def __init__(self, dimensions):
-		# Width and height of the game board.
+		# Mike: width and height of the terminal screen, plus a 'border'
+		# Mike: the border consists of 1s and the rest of the board 0s.
+		# Mike: as pieces 'hit' they turn into numbers (representing colors)
 		self._dimensions = dimensions
+		self.matrix # matrix of number codes signifying pieces
 		pass
 
 	def delete_rows(self):
 		pass
-
+		for check_row = 1 to self._dimensions(1):
+			for check_col = 1 to self._dimensions(2):
+				if self.matrix(check_row,check_col) !== 0:
+					numbers = numbers + 1
+			if numbers == self._dimensions(2) 
+				for check_row_temp = check_row to self._dimensions(1) step -1:
+					if check_row_temp !== 0:
+						for check_col_temp = 1 to self._dimensions(2)
+							self.matrix(check_row_temp,check_col_temp) = self.matrix(check_row_temp - 1,check_col_temp)
+					elif check_row_temp == 0:
+						for check_col_temp = 1 to self._dimensions(2)
+							self.matrix(check_row_temp,check_col_temp) = 0
+				
 	def add_piece(self, piece):
 		pass
 
