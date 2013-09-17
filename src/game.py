@@ -44,31 +44,33 @@ class Piece:
 			self.rotate(self) #rotate to the right
 
 		# If we have a collision, revert to old pivot.
-		if self.hit(self, base) == 1:
+		if self.hit(self, direction, base) == 1:
 			self.pivot = old_pivot
 			self.arms = old_arms
-			# Mike: pause?
 			base.add_piece(base, self)
-		elif self.hit(self, base) == 2:	
+		elif self.hit(self, direction, base) == 2:	
 			self.pivot = old_pivot
 			self.arms = old_arms
 			return False
 		else # If we made it here, the move was successful.
 			return True
 		
-	def hit(self, base) # Need location of new pivot, new "arms," and base.
-		# Mike: Take in direction search base matrix for location.
-		# Mike: If the new location of the piece hits a number, throw a violation.
-		# Mike: Depending on the violation it either does not move or it gets absorbed.
-		if column = column:
-			# Mike: loop through arms and check base rows to see if there is a violation.
-			# Mike: if violation then (??? typically the game has a pause for you to change it move)
-			# Mike: loop thru arms loop thru columns.  If they == base location then return 1		
-		elif row = row:
-			# Mike: loop through arms and check base rows to see if there is a violation.
-			# Mike: if violation then (??? typically the game has a pause for you to change it move)
+	def hit(self, direction, base) 
+		# Take in direction search base matrix for location.
+		# If the new location of the piece hits a number, throw a violation.
+		# Depending on the violation it either does not move or it gets absorbed.
+			
+		if direction == DOWN:
 			for arm in self.arms
-				# Mike: loop thru arms loop thru rows.  If they == base location then return 2
+				# loop thru arms.  If they == base location then return 2
+				for each arm in self.arms
+					if self.arms(arm) == base.matrix(arms):
+						return 2
+		else
+			for each arm in self.arms
+				# If arm hits (but the piece isn't moving down), then just revert to old piece location.
+					if self.arms(arm) == base.matrix(arms):
+						return 1
 
 	def rotate(self):
 		# TODO: matrix rotation
