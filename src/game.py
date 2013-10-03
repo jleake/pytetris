@@ -8,20 +8,21 @@ class Block:
 
 class Piece:
 
-# Mike: TODO: arms... they are each a block so they need two locations.
-			# They are fixed locations around the pivot.  We just don't
-			# know which ones the random number generator will choose
-			# So if it is this kind of piece rotate it this way.  elif this...
+	# arms... they are each a block so they need two locations.
+	# They are fixed locations around the pivot.  We just don't
+	# know which ones the random number generator will choose
+	# So if it is this kind of piece rotate it this way.  elif this...
+	
 	# Constants for 'move' function.
 	DOWN = 1
 	RIGHT = 2
 	LEFT = 3
 	UP = 4
 
-	# Mike: "central" point from which others extend.
-	# Mike: thus when you move down it just shifts central point
-	# Mike: and when you rotate you merely shift orientation around central point.
-	# Mike: The also allows for easy creation of different pieces as you just have to make the points.
+	# "central" point from which others extend.
+	# thus when you move down it just shifts central point
+	# and when you rotate you merely shift orientation around central point.
+	# The also allows for easy creation of different pieces as you just have to make the points.
 	def __init__(self, points, pivot, character, color):
 		self.pivot = pivot 
 		#self.points = (block,block,block...)
@@ -43,7 +44,7 @@ class Piece:
 		elif direction = UP:
 			self.rotate(self) #rotate to the right
 
-		# If we have a collision, revert to old pivot.
+		# If collision, revert to old pivot.
 		if self.hit(self, direction, base) == 1:
 			self.pivot = old_pivot
 			self.arms = old_arms
@@ -73,10 +74,9 @@ class Piece:
 						return 1
 
 	def rotate(self):
-		# TODO: matrix rotation
-		# Mike: the arms are just one number that represent the direction from the pivot (1 = the right of pivot)
-		# Mike: the numbers go around in a circle so if you just add one
-		# Mike: they will end up in the same place, except for when the circle has been completed
+		# the arms are just one number that represent the direction from the pivot (1 = the right of pivot)
+		# the numbers go around in a circle so if you just add one
+		# they will end up in the same place, except for when the circle has been completed
 		for each arm in self.arms
 			if self.arms(arm) + 1 == 5: # Circle complete go back to start
 				self.arms(arm) = 1
@@ -90,17 +90,17 @@ class Piece:
 class Base:
 
 	def __init__(self, dimensions):
-		# Mike: width and height of the terminal screen, plus a 'border'
-		# Mike: the border consists of 1s and the rest of the board 0s.
-		# Mike: as pieces 'hit' they turn into numbers (representing colors)
+		# width and height of the terminal screen, plus a 'border'
+		# the border consists of 1s and the rest of the board 0s.
+		# as pieces 'hit' they turn into numbers (representing colors)
 		self._dimensions = dimensions
 		self.matrix # matrix of number codes signifying pieces
 		pass
 
 	def delete_rows(self):
 		pass
-		for check_row = 1 to self._dimensions(1):
-			for check_col = 1 to self._dimensions(2):
+		for check_row in self._dimensions(1):
+			for check_col in self._dimensions(2):
 				if self.matrix(check_row,check_col) !== 0:
 					numbers = numbers + 1
 			if numbers == self._dimensions(2) 
